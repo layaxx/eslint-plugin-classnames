@@ -75,14 +75,7 @@ ruleTester.run("one-by-one-arguments", rule, {
   Hello
 </button>;`,
       options: [],
-      errors: [
-        {
-          message:
-            "An argument of classNames() has multiple classes. Should be written one by one.",
-          suggestions: [
-            {
-              desc: 'Convert to classNames("...", "...", ...) properly',
-              output: `
+      output: `
 <button
   className={classNames(
     "bg-blue-300", "block",
@@ -92,8 +85,10 @@ ruleTester.run("one-by-one-arguments", rule, {
 >
   Hello
 </button>;`,
-            },
-          ],
+      errors: [
+        {
+          message:
+            "An argument of classNames() has multiple classes. Should be written one by one.",
         },
       ],
     },
@@ -109,14 +104,7 @@ ruleTester.run("one-by-one-arguments", rule, {
   Hello
 </button>;`,
       options: [],
-      errors: [
-        {
-          message:
-            "An argument of classNames() has multiple classes. Should be written one by one.",
-          suggestions: [
-            {
-              desc: 'Convert to classNames("...", "...", ...) properly',
-              output: `
+      output: `
 <button
   className={classNames("bg-blue-300", "block", foo && [
     "relative",
@@ -125,8 +113,10 @@ ruleTester.run("one-by-one-arguments", rule, {
 >
   Hello
 </button>;`,
-            },
-          ],
+      errors: [
+        {
+          message:
+            "An argument of classNames() has multiple classes. Should be written one by one.",
         },
       ],
     },
@@ -137,19 +127,14 @@ ruleTester.run("one-by-one-arguments", rule, {
   Hello
 </button>;`,
       options: [],
+      output: `
+<button className={classNames("bg-blue-300", "block", style.someClass)}>
+  Hello
+</button>;`,
       errors: [
         {
           message:
             "An argument of classNames() has multiple classes. Should be written one by one.",
-          suggestions: [
-            {
-              desc: 'Convert to classNames("...", "...", ...) properly',
-              output: `
-<button className={classNames("bg-blue-300", "block", style.someClass)}>
-  Hello
-</button>;`,
-            },
-          ],
         },
       ],
     },
@@ -170,14 +155,7 @@ ruleTester.run("one-by-one-arguments", rule, {
           functionName: "clsx",
         },
       ],
-      errors: [
-        {
-          message:
-            "An argument of clsx() has multiple classes. Should be written one by one.",
-          suggestions: [
-            {
-              desc: 'Convert to clsx("...", "...", ...) properly',
-              output: `
+      output: `
 <button
   className={clsx(
     "bg-blue-300", "block",
@@ -187,8 +165,10 @@ ruleTester.run("one-by-one-arguments", rule, {
 >
   Hello
 </button>;`,
-            },
-          ],
+      errors: [
+        {
+          message:
+            "An argument of clsx() has multiple classes. Should be written one by one.",
         },
       ],
     },

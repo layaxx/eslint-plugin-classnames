@@ -65,17 +65,12 @@ ruleTester.run("prefer-classnames-function", rule, {
           functionName: "className",
         },
       ],
+      output:
+        '<button className={className("bg-blue-300", "block")}>Hello</button>;',
       errors: [
         {
           message:
             "The className has more than 1 classes. Use className() instead.",
-          suggestions: [
-            {
-              desc: 'Convert to className("...", "...", ...) properly',
-              output:
-                '<button className={className("bg-blue-300", "block")}>Hello</button>;',
-            },
-          ],
         },
       ],
     },
@@ -88,16 +83,11 @@ ruleTester.run("prefer-classnames-function", rule, {
           functionName: "clsx",
         },
       ],
+      output:
+        '<button className={clsx("bg-blue-300", "block")}>Hello</button>;',
       errors: [
         {
           message: "The className has more than 1 classes. Use clsx() instead.",
-          suggestions: [
-            {
-              desc: 'Convert to clsx("...", "...", ...) properly',
-              output:
-                '<button className={clsx("bg-blue-300", "block")}>Hello</button>;',
-            },
-          ],
         },
       ],
     },
@@ -109,17 +99,13 @@ ruleTester.run("prefer-classnames-function", rule, {
           maxSpaceSeparetedClasses: 2,
         },
       ],
+      output:
+        '<button className={classNames("bg-blue-300", "block", "relative")}>Hello</button>;',
+
       errors: [
         {
           message:
             "The className has more than 2 classes. Use classNames() instead.",
-          suggestions: [
-            {
-              desc: 'Convert to classNames("...", "...", ...) properly',
-              output:
-                '<button className={classNames("bg-blue-300", "block", "relative")}>Hello</button>;',
-            },
-          ],
         },
       ],
     },
@@ -128,16 +114,12 @@ ruleTester.run("prefer-classnames-function", rule, {
     {
       code: '<button className={classNames("bg-blue-300")}>Hello</button>;',
       options: [],
+      output: '<button className="bg-blue-300">Hello</button>;',
+
       errors: [
         {
           message:
             "Do not use classNames() when you have no greater than 1 classes.",
-          suggestions: [
-            {
-              desc: 'Just use className="..."',
-              output: '<button className="bg-blue-300">Hello</button>;',
-            },
-          ],
         },
       ],
     },
@@ -149,17 +131,12 @@ ruleTester.run("prefer-classnames-function", rule, {
           maxSpaceSeparetedClasses: 2,
         },
       ],
+      output: '<button className="bg-blue-300 text-white">Hello</button>;',
+
       errors: [
         {
           message:
             "Do not use classNames() when you have no greater than 2 classes.",
-          suggestions: [
-            {
-              desc: 'Just use className="..."',
-              output:
-                '<button className="bg-blue-300 text-white">Hello</button>;',
-            },
-          ],
         },
       ],
     },
@@ -168,17 +145,13 @@ ruleTester.run("prefer-classnames-function", rule, {
     {
       code: "<button className={`bg-blue-300 block`}>Hello</button>;",
       options: [],
+      output:
+        '<button className={classNames("bg-blue-300", "block")}>Hello</button>;',
+
       errors: [
         {
           message:
             "The className has more than 1 classes. Use classNames() instead.",
-          suggestions: [
-            {
-              desc: 'Convert to classNames("...", "...", ...) properly',
-              output:
-                '<button className={classNames("bg-blue-300", "block")}>Hello</button>;',
-            },
-          ],
         },
       ],
     },
