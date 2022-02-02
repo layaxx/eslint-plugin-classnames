@@ -63,6 +63,26 @@ ruleTester.run("no-unnecessary-whitespace", rule, {
     {
       code: "<button className={classNames(` ignore  template tags `)}>Hello</button>;",
     },
+    {
+      code: `<div
+    className={clsx(
+      "xl:rounded-r",
+      "xl:translate-x-0",
+      "ease-in-out",
+      "transition",
+      "duration-500",
+      "flex",
+      "flex-1",
+      "justify-start",
+      "items-start",
+      "w-full",
+      "sm:w-64",
+      "bg-gray-900",
+      "flex-col",
+      "h-full"
+    )}
+  />`,
+    },
   ],
   invalid: [
     {
@@ -171,6 +191,51 @@ ruleTester.run("no-unnecessary-whitespace", rule, {
     {
       code: '<button className={clsx("first-class","")}>Hello</button>;',
       output: '<button className={clsx("first-class")}>Hello</button>;',
+      errors: [
+        {
+          message: "Some className value has unnecessary whitespace",
+        },
+      ],
+    },
+    {
+      code: `<div
+className={clsx(
+  "xl:rounded-r",
+  "xl:translate-x-0",
+  "ease-in-out",
+  "transition",
+  "duration-500",
+  "flex",
+  	
+  "flex-1",
+  "justify-start",
+  "items-start",
+  "w-full",
+
+  "sm:w-64",
+  "bg-gray-900",
+  "flex-col",
+  "h-full"
+)}
+/>`,
+      output: `<div
+className={clsx(
+  "xl:rounded-r",
+  "xl:translate-x-0",
+  "ease-in-out",
+  "transition",
+  "duration-500",
+  "flex",
+  "flex-1",
+  "justify-start",
+  "items-start",
+  "w-full",
+  "sm:w-64",
+  "bg-gray-900",
+  "flex-col",
+  "h-full"
+)}
+/>`,
       errors: [
         {
           message: "Some className value has unnecessary whitespace",
