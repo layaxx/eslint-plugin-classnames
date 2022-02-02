@@ -198,6 +198,15 @@ ruleTester.run("no-unnecessary-whitespace", rule, {
       ],
     },
     {
+      code: '<button className={clsx("","first-class")}>Hello</button>;',
+      output: '<button className={clsx("first-class")}>Hello</button>;',
+      errors: [
+        {
+          message: "Some className value has unnecessary whitespace",
+        },
+      ],
+    },
+    {
       code: `<div
 className={clsx(
   "xl:rounded-r",
