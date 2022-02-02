@@ -251,5 +251,36 @@ className={clsx(
         },
       ],
     },
+    {
+      code: `<div
+className={clsx(
+
+  "flex",
+  	
+  "flex-1",
+  "justify-start",
+  "items-start",
+  "w-full",
+
+  "sm:w-64",
+
+)}
+/>`,
+      output: `<div
+className={clsx(
+  "flex",
+  "flex-1",
+  "justify-start",
+  "items-start",
+  "w-full",
+  "sm:w-64",
+)}
+/>`,
+      errors: [
+        {
+          message: "Some className value has unnecessary whitespace",
+        },
+      ],
+    },
   ],
 });
