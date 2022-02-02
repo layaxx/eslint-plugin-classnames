@@ -64,6 +64,15 @@ ruleTester.run("no-unnecessary-whitespace", rule, {
       code: "<button className={classNames(` ignore  template tags `)}>Hello</button>;",
     },
     {
+      code: '<button className={classNames(true && "valid-class")}>Hello</button>;',
+    },
+    {
+      code: '<button className={classNames(true ? "valid-class":"another-valid-class")}>Hello</button>;',
+    },
+    {
+      code: '<button className={classNames(["valid-class", "another-valid-class"])}>Hello</button>;',
+    },
+    {
       code: `<div
     className={clsx(
       "xl:rounded-r",
@@ -189,6 +198,15 @@ ruleTester.run("no-unnecessary-whitespace", rule, {
       ],
     },
     {
+      code: '<button className={clsx(true && "first-class ")}>Hello</button>;',
+      output: '<button className={clsx(true && "first-class")}>Hello</button>;',
+      errors: [
+        {
+          message: "Some className value has unnecessary whitespace",
+        },
+      ],
+    },
+    {
       code: '<button className={clsx("first-class","")}>Hello</button>;',
       output: '<button className={clsx("first-class")}>Hello</button>;',
       errors: [
@@ -276,6 +294,39 @@ className={clsx(
   "sm:w-64",
 )}
 />`,
+      errors: [
+        {
+          message: "Some className value has unnecessary whitespace",
+        },
+      ],
+    },
+    {
+      code: '<button className={clsx(true ? "first-class" : "second-class ")}>Hello</button>;',
+      output:
+        '<button className={clsx(true ? "first-class" : "second-class")}>Hello</button>;',
+      errors: [
+        {
+          message: "Some className value has unnecessary whitespace",
+        },
+      ],
+    },
+    {
+      code: '<button className={clsx(true ? " first-class" : "second-class ")}>Hello</button>;',
+      output:
+        '<button className={clsx(true ? "first-class" : "second-class")}>Hello</button>;',
+      errors: [
+        {
+          message: "Some className value has unnecessary whitespace",
+        },
+        {
+          message: "Some className value has unnecessary whitespace",
+        },
+      ],
+    },
+    {
+      code: '<button className={clsx([" whitespace-at-beginning", "valid"])}>Hello</button>;',
+      output:
+        '<button className={clsx(["whitespace-at-beginning", "valid"])}>Hello</button>;',
       errors: [
         {
           message: "Some className value has unnecessary whitespace",
