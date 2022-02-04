@@ -78,10 +78,12 @@ Examples of **correct** code for this rule:
 ```js
 ...
 "classnames/one-by-one-arguments": [<enabled>, {
-  "functionName": <string>
+  "functionNames": [<string>]
 }]
 ...
 ```
+
+Provide an array of strings for `functionNames` to apply this rule to all calls for these functions. Empty Array effectively disables this rule. If not provided, defaults to ["clsx", "classNames"]
 
 You can set `functionName` to `classNames` or `clsx`. Defaults to `classNames`
 

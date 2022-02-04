@@ -1,5 +1,14 @@
+// @ts-check
+"use strict";
+
+const { RuleTester } = require("eslint");
+
 const errors = [{ messageId: "unsorted" }];
+
 module.exports = {
+  /**
+   *  @type  {{valid: (string | RuleTester.ValidTestCase)[], invalid: RuleTester.InvalidTestCase[]}}
+   **/
   cases: {
     valid: [
       {
@@ -19,6 +28,10 @@ module.exports = {
         code: `<i className={clsx("bg-blue-300", "block", style.someClass)} />;`,
       },
       {
+        code: `<i className={clsx("bg-blue-300", "another-class")} />;`,
+        options: [{ functionNames: ["customFunction"] }],
+      },
+      {
         code: `<button
       className={classNames("bg-blue-300", "xl:block", "relative")}
     >
@@ -32,6 +45,14 @@ module.exports = {
         code: '<button className={classNames("flex","bg-blue-300")}>Hello</button>;',
         output:
           '<button className={classNames("bg-blue-300","flex")}>Hello</button>;',
+        errors,
+      },
+
+      {
+        code: '<button className={customFunction("flex","bg-blue-300")}>Hello</button>;',
+        output:
+          '<button className={customFunction("bg-blue-300","flex")}>Hello</button>;',
+        options: [{ functionNames: ["customFunction"] }],
         errors,
       },
 

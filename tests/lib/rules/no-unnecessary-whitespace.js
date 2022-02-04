@@ -37,6 +37,14 @@ ruleTester.run("no-unnecessary-whitespace", rule, {
     '<button className={classNames(true && "valid-class")}>Hello</button>;',
     '<button className={classNames(true ? "valid-class":"another-valid-class")}>Hello</button>;',
     '<button className={classNames(["valid-class", "another-valid-class"])}>Hello</button>;',
+    {
+      code: '<i className={clsx(" whitespace  but valid ")}/>',
+      options: [{ functionNames: [] }],
+    },
+    {
+      code: '<i className={clsx(" whitespace  but valid ")}/>',
+      options: [{ functionNames: ["someValue"] }],
+    },
     `<div
     className={clsx(
       "xl:rounded-r",
@@ -114,6 +122,30 @@ ruleTester.run("no-unnecessary-whitespace", rule, {
       code: '<button className={clsx("first-class","class-name ")}>Hello</button>;',
       output:
         '<button className={clsx("first-class","class-name")}>Hello</button>;',
+      errors,
+    },
+    {
+      code: '<button className={clsx("first-class","class-name ")}>Hello</button>;',
+      output:
+        '<button className={clsx("first-class","class-name")}>Hello</button>;',
+
+      options: [{ functionNames: ["something", "clsx"] }],
+      errors,
+    },
+    {
+      code: '<button className={customFunction("first-class","class-name ")}>Hello</button>;',
+      output:
+        '<button className={customFunction("first-class","class-name")}>Hello</button>;',
+
+      options: [{ functionNames: ["customFunction"] }],
+      errors,
+    },
+    {
+      code: '<button className={customFunction("first-class","class-name ")}>Hello</button>;',
+      output:
+        '<button className={customFunction("first-class","class-name")}>Hello</button>;',
+
+      options: [{ functionNames: ["foo", "customFunction"] }],
       errors,
     },
     {

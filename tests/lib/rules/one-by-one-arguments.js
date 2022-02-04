@@ -55,6 +55,14 @@ ruleTester.run("one-by-one-arguments", rule, {
 `,
     '<i className={notClassNames("class-name-1 class-name-2 class-name-3")}/>',
     '<i className={this.classNames("class-name-1 class-name-2 class-name-3")}/>',
+    {
+      code: '<i className={clsx("valid for supplied options")} />',
+      options: [
+        {
+          functionNames: ["someCustomFunction"],
+        },
+      ],
+    },
   ],
 
   invalid: [
@@ -118,6 +126,23 @@ ruleTester.run("one-by-one-arguments", rule, {
 
     {
       code: `
+<button className={someCustomFunction("bg-blue-300 block")}>
+  Hello
+</button>;`,
+      output: `
+<button className={someCustomFunction("bg-blue-300", "block")}>
+  Hello
+</button>;`,
+      options: [
+        {
+          functionNames: ["someCustomFunction"],
+        },
+      ],
+      errors,
+    },
+
+    {
+      code: `
 <button
   className={clsx(
     "bg-blue-300 block",
@@ -129,7 +154,7 @@ ruleTester.run("one-by-one-arguments", rule, {
 </button>;`,
       options: [
         {
-          functionName: "clsx",
+          functionNames: ["clsx"],
         },
       ],
       output: `

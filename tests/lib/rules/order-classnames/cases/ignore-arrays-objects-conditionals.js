@@ -1,5 +1,14 @@
+// @ts-check
+"use strict";
+
+const { RuleTester } = require("eslint");
+
 const errors = [{ messageId: "unsorted" }];
+
 module.exports = {
+  /**
+   *  @type  {{valid: (string | RuleTester.ValidTestCase)[], invalid: RuleTester.InvalidTestCase[]}}
+   **/
   cases: {
     valid: [
       `<button

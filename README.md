@@ -37,7 +37,7 @@ Then configure the rules you want to use under the rules section.
 ```json
 {
   "rules": {
-    "classnames/prefer-classnames-function": [2, {functionName: "clsx"}],
+    "classnames/prefer-classnames-function": [2, {"functionName": "clsx"}],
     "classnames/no-unnecessary-whitespace": 2,
   }
 }

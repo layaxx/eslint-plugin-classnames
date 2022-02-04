@@ -30,19 +30,19 @@ Examples of **correct** code for this rule:
 
 ## Rule Options
 
-```js
+```json
 ...
 "classnames/prefer-classnames-function": [<enabled>, {
-  "maxSpaceSeparetedClasses": <number>,
+  "maxSpaceSeparatedClasses": <number>,
   "functionName": <string>
 }]
 ...
 ```
 
-You can set `maxSpaceSeparetedClasses` so that you can allow space-separeted classes to be written more than once. It defaults to `1`.
+You can set `maxSpaceSeparatedClasses` to allow that many space-separated classes. Defaults to `1`.
 
-You can set `functionName` to `classNames` or `clsx`.
+You can set `functionName` to `classNames` or `clsx` (or any other string really).
 
 ## When Not To Use It
 
-If you want to allow space-separeted classes, you can disable this rule.
+If you want to allow space-separated classes, you can disable this rule.

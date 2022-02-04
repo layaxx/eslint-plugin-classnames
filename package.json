@@ -1,7 +1,7 @@
 {
   "name": "eslint-plugin-classnames",
-  "version": "0.5.0",
-  "description": "Warn and formats long classNames usage in JSX",
+  "version": "1.0.0",
+  "description": "Formatting help for className attributes in JSX, with a focus on clsx/classNames and tailwindcss support",
   "repository": {
     "url": "https://github.com/layaxx/eslint-plugin-classnames"
   },

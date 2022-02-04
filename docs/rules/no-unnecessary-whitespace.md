@@ -9,7 +9,7 @@ Examples of **incorrect** code for this rule:
 ```jsx
 <button className=" bg-blue-300 block">Hello</button>; // Whitespace at beginning
 <button className="bg-blue-300 block ">Hello</button>; // Whitespace at end
-<button className={"bg-blue-300  block"}>Hello</button>; // multiple consecutive whitespaces
+<button className={"bg-blue-300  block"}>Hello</button>; // multiple consecutive whitespace chars
 ```
 
 Examples of **correct** code for this rule:
@@ -24,8 +24,10 @@ Examples of **correct** code for this rule:
 
 ```js
 ...
-"classnames/no-unnecessary-whitespace": [<enabled>]
+"classnames/no-unnecessary-whitespace": [<enabled>, {
+  "functionNames": [<string>]
+}]
 ...
 ```
 
-
+Provide an array of strings for `functionNames` to apply this rule to all calls for these functions inside className attributes. Empty Array means this rule only applies to literal strings provided to the className attribute. If not provided, defaults to ["clsx", "classNames"].

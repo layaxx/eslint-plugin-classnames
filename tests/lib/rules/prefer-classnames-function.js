@@ -13,7 +13,7 @@ ruleTester.run("prefer-classnames-function", rule, {
       code: '<button className="bg-blue-300">Hello</button>;',
       options: [
         {
-          maxSpaceSeparetedClasses: 1,
+          maxSpaceSeparatedClasses: 1,
         },
       ],
     },
@@ -21,7 +21,7 @@ ruleTester.run("prefer-classnames-function", rule, {
       code: '<button className={classNames("bg-blue-300", "block")}>Hello</button>;',
       options: [
         {
-          maxSpaceSeparetedClasses: 1,
+          maxSpaceSeparatedClasses: 1,
         },
       ],
     },
@@ -35,7 +35,7 @@ ruleTester.run("prefer-classnames-function", rule, {
       `,
       options: [
         {
-          maxSpaceSeparetedClasses: 1,
+          maxSpaceSeparatedClasses: 1,
         },
       ],
     },
@@ -43,7 +43,7 @@ ruleTester.run("prefer-classnames-function", rule, {
       code: '<button className={clsx("bg-blue-300", "block")}>Hello</button>;',
       options: [
         {
-          maxSpaceSeparetedClasses: 1,
+          maxSpaceSeparatedClasses: 1,
         },
       ],
     },
@@ -51,7 +51,7 @@ ruleTester.run("prefer-classnames-function", rule, {
       code: '<button className="bg-blue-300 block">Hello</button>;',
       options: [
         {
-          maxSpaceSeparetedClasses: 2,
+          maxSpaceSeparatedClasses: 2,
         },
       ],
     },
@@ -62,7 +62,7 @@ ruleTester.run("prefer-classnames-function", rule, {
       code: '<button className="bg-blue-300 block">Hello</button>;',
       options: [
         {
-          maxSpaceSeparetedClasses: 1,
+          maxSpaceSeparatedClasses: 1,
           functionName: "className",
         },
       ],
@@ -80,7 +80,7 @@ ruleTester.run("prefer-classnames-function", rule, {
       code: '<button className="bg-blue-300 block">Hello</button>;',
       options: [
         {
-          maxSpaceSeparetedClasses: 1,
+          maxSpaceSeparatedClasses: 1,
           functionName: "clsx",
         },
       ],
@@ -97,7 +97,7 @@ ruleTester.run("prefer-classnames-function", rule, {
       code: '<button className="bg-blue-300 block relative">Hello</button>;',
       options: [
         {
-          maxSpaceSeparetedClasses: 2,
+          maxSpaceSeparatedClasses: 2,
         },
       ],
       output:
@@ -126,7 +126,7 @@ ruleTester.run("prefer-classnames-function", rule, {
       code: '<button className={clsx("bg-blue-300", "text-white")}>Hello</button>;',
       options: [
         {
-          maxSpaceSeparetedClasses: 2,
+          maxSpaceSeparatedClasses: 2,
         },
       ],
       output: '<button className="bg-blue-300 text-white">Hello</button>;',
