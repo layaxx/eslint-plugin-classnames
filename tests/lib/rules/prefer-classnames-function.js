@@ -101,7 +101,6 @@ ruleTester.run("prefer-classnames-function", rule, {
       ],
       output:
         '<button className={classNames("bg-blue-300", "block", "relative")}>Hello</button>;',
-
       errors: [
         {
           message:
@@ -113,7 +112,6 @@ ruleTester.run("prefer-classnames-function", rule, {
     // avoid className
     {
       code: '<button className={classNames("bg-blue-300")}>Hello</button>;',
-      options: [],
       output: '<button className="bg-blue-300">Hello</button>;',
       errors: [
         {
@@ -142,7 +140,6 @@ ruleTester.run("prefer-classnames-function", rule, {
     // using template literal
     {
       code: "<button className={`bg-blue-300 block`}>Hello</button>;",
-      options: [],
       output:
         '<button className={classNames("bg-blue-300", "block")}>Hello</button>;',
       errors: [

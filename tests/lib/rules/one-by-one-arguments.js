@@ -9,8 +9,7 @@ const ruleTester = new RuleTester({ parserOptions });
 
 ruleTester.run("one-by-one-arguments", rule, {
   valid: [
-    {
-      code: `<button
+    `<button
       className={classNames(
         "bg-blue-300",
         "block",
@@ -22,10 +21,7 @@ ruleTester.run("one-by-one-arguments", rule, {
       Hello
     </button>;
 `,
-      options: [],
-    },
-    {
-      code: `<button
+    `<button
       className={classNames(["bg-blue-300", "block"], "relative", foo && [
         "text-white",
         "hover:text-grey-100",
@@ -34,18 +30,11 @@ ruleTester.run("one-by-one-arguments", rule, {
       Hello
     </button>;
 `,
-      options: [],
-    },
-    {
-      code: `<button className={classNames("bg-blue-300", "block", style.someClass)}>
+    `<button className={classNames("bg-blue-300", "block", style.someClass)}>
       Hello
     </button>;
 `,
-      options: [],
-    },
-
-    {
-      code: `
+    `
 <button
   className={classNames(
     {
@@ -58,8 +47,6 @@ ruleTester.run("one-by-one-arguments", rule, {
   Hello
 </button>;
 `,
-      options: [],
-    },
   ],
 
   invalid: [

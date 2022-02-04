@@ -1,3 +1,4 @@
+const errors = [{ messageId: "unsorted" }];
 module.exports = {
   cases: {
     valid: [
@@ -31,11 +32,7 @@ module.exports = {
         code: '<button className={classNames("flex","bg-blue-300")}>Hello</button>;',
         output:
           '<button className={classNames("bg-blue-300","flex")}>Hello</button>;',
-        errors: [
-          {
-            messageId: "unsorted",
-          },
-        ],
+        errors,
       },
 
       {
@@ -45,7 +42,7 @@ module.exports = {
         output: `<button className={classNames("bg-blue-300", "block", style.someClass)}>
       Hello
     </button>;`,
-        errors: [{ messageId: "unsorted" }],
+        errors,
       },
     ],
   },

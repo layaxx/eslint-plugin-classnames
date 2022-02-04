@@ -1,6 +1,12 @@
 // @ts-check
 "use strict";
 
+const errors = [
+  {
+    message: "Some className value has unnecessary whitespace",
+  },
+];
+
 const RuleTester = require("eslint").RuleTester;
 const rule = require("../../../lib/rules/no-unnecessary-whitespace");
 const { parserOptions } = require("../../utils");
@@ -9,71 +15,28 @@ const ruleTester = new RuleTester({ parserOptions });
 
 ruleTester.run("no-unnecessary-whitespace", rule, {
   valid: [
-    {
-      code: '<button className="bg-blue-300">Hello</button>;',
-    },
-    {
-      code: '<button className={"bg-blue-300 block"}>Hello</button>;',
-    },
-    {
-      code: '<button className="bg-blue-300 block">Hello</button>;',
-    },
-    {
-      code: '<button className="bg-blue-300 another-class block">Hello</button>;',
-    },
-    {
-      code: '<button className={"block"}>Hello</button>;',
-    },
-    {
-      code: "<button className={`bg-blue-300 block`}>Hello</button>;",
-    },
-    {
-      code: "<button className={`bg-red-400`}>Hello</button>;",
-    },
-    {
-      code: "<button className={` bg-red-400`}>Hello</button>;",
-    },
-    {
-      code: "<button className={`bg-red-400 `}>Hello</button>;",
-    },
-    {
-      code: "<button className={`bg-red-400   flex`}>Hello</button>;",
-    },
-    {
-      code: '<button className={clsx("class-name")}>Hello</button>;',
-    },
-    {
-      code: '<button className={clsx("class-name second-class")}>Hello</button>;',
-    },
-    {
-      code: '<button className={clsx("class-name", "second-class")}>Hello</button>;',
-    },
-    {
-      code: "<button className={clsx(` ignore  template tags `)}>Hello</button>;",
-    },
-    {
-      code: '<button className={classNames("class-name")}>Hello</button>;',
-    },
-    {
-      code: '<button className={classNames("class-name second-class")}>Hello</button>;',
-    },
-    {
-      code: '<button className={classNames("class-name", "second-class")}>Hello</button>;',
-    },
-    {
-      code: "<button className={classNames(` ignore  template tags `)}>Hello</button>;",
-    },
-    {
-      code: '<button className={classNames(true && "valid-class")}>Hello</button>;',
-    },
-    {
-      code: '<button className={classNames(true ? "valid-class":"another-valid-class")}>Hello</button>;',
-    },
-    {
-      code: '<button className={classNames(["valid-class", "another-valid-class"])}>Hello</button>;',
-    },
-    {
-      code: `<div
+    '<button className="bg-blue-300">Hello</button>;',
+    '<button className={"bg-blue-300 block"}>Hello</button>;',
+    '<button className="bg-blue-300 block">Hello</button>;',
+    '<button className="bg-blue-300 another-class block">Hello</button>;',
+    '<button className={"block"}>Hello</button>;',
+    "<button className={`bg-blue-300 block`}>Hello</button>;",
+    "<button className={`bg-red-400`}>Hello</button>;",
+    "<button className={` bg-red-400`}>Hello</button>;",
+    "<button className={`bg-red-400 `}>Hello</button>;",
+    "<button className={`bg-red-400   flex`}>Hello</button>;",
+    '<button className={clsx("class-name")}>Hello</button>;',
+    '<button className={clsx("class-name second-class")}>Hello</button>;',
+    '<button className={clsx("class-name", "second-class")}>Hello</button>;',
+    "<button className={clsx(` ignore  template tags `)}>Hello</button>;",
+    '<button className={classNames("class-name")}>Hello</button>;',
+    '<button className={classNames("class-name second-class")}>Hello</button>;',
+    '<button className={classNames("class-name", "second-class")}>Hello</button>;',
+    "<button className={classNames(` ignore  template tags `)}>Hello</button>;",
+    '<button className={classNames(true && "valid-class")}>Hello</button>;',
+    '<button className={classNames(true ? "valid-class":"another-valid-class")}>Hello</button>;',
+    '<button className={classNames(["valid-class", "another-valid-class"])}>Hello</button>;',
+    `<div
     className={clsx(
       "xl:rounded-r",
       "xl:translate-x-0",
@@ -91,138 +54,81 @@ ruleTester.run("no-unnecessary-whitespace", rule, {
       "h-full"
     )}
   />`,
-    },
   ],
   invalid: [
     {
       code: '<button className=" bg-blue-300 block">Hello</button>;',
       output: '<button className="bg-blue-300 block">Hello</button>;',
-      errors: [
-        {
-          message: "Some className value has unnecessary whitespace",
-        },
-      ],
+      errors,
     },
     {
       code: '<button className="bg-blue-300 block ">Hello</button>;',
       output: '<button className="bg-blue-300 block">Hello</button>;',
-      errors: [
-        {
-          message: "Some className value has unnecessary whitespace",
-        },
-      ],
+      errors,
     },
     {
       code: '<button className="bg-blue-300  block">Hello</button>;',
       output: '<button className="bg-blue-300 block">Hello</button>;',
-      errors: [
-        {
-          message: "Some className value has unnecessary whitespace",
-        },
-      ],
+      errors,
     },
 
     {
       code: '<button className={"bg-blue-300 block "}>Hello</button>;',
       output: '<button className="bg-blue-300 block">Hello</button>;',
-      errors: [
-        {
-          message: "Some className value has unnecessary whitespace",
-        },
-      ],
+      errors,
     },
     {
       code: '<button className={" bg-blue-300 block"}>Hello</button>;',
       output: '<button className="bg-blue-300 block">Hello</button>;',
-      errors: [
-        {
-          message: "Some className value has unnecessary whitespace",
-        },
-      ],
+      errors,
     },
     {
       code: '<button className={"bg-blue-300  block"}>Hello</button>;',
       output: '<button className="bg-blue-300 block">Hello</button>;',
-      errors: [
-        {
-          message: "Some className value has unnecessary whitespace",
-        },
-      ],
+      errors,
     },
 
     {
       code: '<button className={" bg-blue-300     block  "}>Hello</button>;',
       output: '<button className="bg-blue-300 block">Hello</button>;',
-      errors: [
-        {
-          message: "Some className value has unnecessary whitespace",
-        },
-      ],
+      errors,
     },
     {
       code: '<button className={clsx(" class-name")}>Hello</button>;',
       output: '<button className={clsx("class-name")}>Hello</button>;',
-      errors: [
-        {
-          message: "Some className value has unnecessary whitespace",
-        },
-      ],
+      errors,
     },
     {
       code: '<button className={clsx("class-name ")}>Hello</button>;',
       output: '<button className={clsx("class-name")}>Hello</button>;',
-      errors: [
-        {
-          message: "Some className value has unnecessary whitespace",
-        },
-      ],
+      errors,
     },
     {
       code: '<button className={clsx("class-name  second-class")}>Hello</button>;',
       output:
         '<button className={clsx("class-name second-class")}>Hello</button>;',
-      errors: [
-        {
-          message: "Some className value has unnecessary whitespace",
-        },
-      ],
+      errors,
     },
     {
       code: '<button className={clsx("first-class","class-name ")}>Hello</button>;',
       output:
         '<button className={clsx("first-class","class-name")}>Hello</button>;',
-      errors: [
-        {
-          message: "Some className value has unnecessary whitespace",
-        },
-      ],
+      errors,
     },
     {
       code: '<button className={clsx(true && "first-class ")}>Hello</button>;',
       output: '<button className={clsx(true && "first-class")}>Hello</button>;',
-      errors: [
-        {
-          message: "Some className value has unnecessary whitespace",
-        },
-      ],
+      errors,
     },
     {
       code: '<button className={clsx("first-class","")}>Hello</button>;',
       output: '<button className={clsx("first-class")}>Hello</button>;',
-      errors: [
-        {
-          message: "Some className value has unnecessary whitespace",
-        },
-      ],
+      errors,
     },
     {
       code: '<button className={clsx("","first-class")}>Hello</button>;',
       output: '<button className={clsx("first-class")}>Hello</button>;',
-      errors: [
-        {
-          message: "Some className value has unnecessary whitespace",
-        },
-      ],
+      errors,
     },
     {
       code: `<div
@@ -263,11 +169,7 @@ className={clsx(
   "h-full"
 )}
 />`,
-      errors: [
-        {
-          message: "Some className value has unnecessary whitespace",
-        },
-      ],
+      errors,
     },
     {
       code: `<div
@@ -294,21 +196,13 @@ className={clsx(
   "sm:w-64",
 )}
 />`,
-      errors: [
-        {
-          message: "Some className value has unnecessary whitespace",
-        },
-      ],
+      errors,
     },
     {
       code: '<button className={clsx(true ? "first-class" : "second-class ")}>Hello</button>;',
       output:
         '<button className={clsx(true ? "first-class" : "second-class")}>Hello</button>;',
-      errors: [
-        {
-          message: "Some className value has unnecessary whitespace",
-        },
-      ],
+      errors,
     },
     {
       code: '<button className={clsx(true ? " first-class" : "second-class ")}>Hello</button>;',
@@ -327,11 +221,7 @@ className={clsx(
       code: '<button className={clsx([" whitespace-at-beginning", "valid"])}>Hello</button>;',
       output:
         '<button className={clsx(["whitespace-at-beginning", "valid"])}>Hello</button>;',
-      errors: [
-        {
-          message: "Some className value has unnecessary whitespace",
-        },
-      ],
+      errors,
     },
   ],
 });

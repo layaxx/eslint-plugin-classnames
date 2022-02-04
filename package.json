@@ -16,7 +16,7 @@
   ],
   "main": "lib/index.js",
   "scripts": {
-    "test": "mocha tests --recursive --forbid-only",
+    "test": "nyc mocha tests --recursive --forbid-only",
     "dev": "mocha tests --recursive",
     "prepare": "husky install"
   },
@@ -29,6 +29,7 @@
     "glob": "^7.2.0",
     "husky": "^7.0.4",
     "mocha": "^7.2.0",
+    "nyc": "^15.1.0",
     "typescript": "^4.3.5"
   },
   "engines": {

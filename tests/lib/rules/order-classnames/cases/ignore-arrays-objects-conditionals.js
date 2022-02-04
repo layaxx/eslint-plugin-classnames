@@ -1,3 +1,4 @@
+const errors = [{ messageId: "unsorted" }];
 module.exports = {
   cases: {
     valid: [
@@ -71,7 +72,7 @@ module.exports = {
   Hello
 </button>;
 `,
-        errors: [{ messageId: "unsorted" }],
+        errors,
       },
 
       {
@@ -103,7 +104,7 @@ module.exports = {
     Hello
   </button>;
   `,
-        errors: [{ messageId: "unsorted" }],
+        errors,
       },
     ],
   },

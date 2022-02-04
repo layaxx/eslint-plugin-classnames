@@ -52,5 +52,5 @@ module.exports = {
     ],
     invalid: [],
   },
-  title: "ignore-arrays-objects-conditionals",
+  title: "ignore-prefixes",
 };
