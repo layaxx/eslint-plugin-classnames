@@ -2,8 +2,7 @@ const errors = [{ messageId: "unsorted" }];
 module.exports = {
   cases: {
     valid: [
-      {
-        code: `<button
+      `<button
       className={classNames(["bg-blue-300", "block"], "relative", foo && [
         "text-white",
         "hover:text-grey-100",
@@ -12,9 +11,7 @@ module.exports = {
       Hello
     </button>;
 `,
-      },
-      {
-        code: `
+      `
   <button
     className={classNames(
       {
@@ -27,9 +24,7 @@ module.exports = {
     Hello
   </button>;
   `,
-      },
-      {
-        code: `<button
+      `<button
       className={classNames(
         {
           "x-whatever": someVariable,
@@ -42,7 +37,7 @@ module.exports = {
     >
       Hello
     </button>;`,
-      },
+      '<i className={someOtherFunction("wrong-order-but-ignored", "flex", "another-class")} />',
     ],
     invalid: [
       {

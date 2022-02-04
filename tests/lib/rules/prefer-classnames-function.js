@@ -55,6 +55,7 @@ ruleTester.run("prefer-classnames-function", rule, {
         },
       ],
     },
+    '<i notClassName="some-class another-class a-third-class" />',
   ],
   invalid: [
     {

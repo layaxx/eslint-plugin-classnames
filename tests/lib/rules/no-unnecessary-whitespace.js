@@ -25,6 +25,7 @@ ruleTester.run("no-unnecessary-whitespace", rule, {
     "<button className={` bg-red-400`}>Hello</button>;",
     "<button className={`bg-red-400 `}>Hello</button>;",
     "<button className={`bg-red-400   flex`}>Hello</button>;",
+    '<i className={undefined} ignoredAttribute=" with invalid  whitespace" />',
     '<button className={clsx("class-name")}>Hello</button>;',
     '<button className={clsx("class-name second-class")}>Hello</button>;',
     '<button className={clsx("class-name", "second-class")}>Hello</button>;',
@@ -221,6 +222,11 @@ className={clsx(
       code: '<button className={clsx([" whitespace-at-beginning", "valid"])}>Hello</button>;',
       output:
         '<button className={clsx(["whitespace-at-beginning", "valid"])}>Hello</button>;',
+      errors,
+    },
+    {
+      code: '<button className={clsx("")}>Hello</button>;',
+      output: "<button className={clsx()}>Hello</button>;",
       errors,
     },
   ],

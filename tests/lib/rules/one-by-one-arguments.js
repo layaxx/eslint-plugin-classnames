@@ -7,6 +7,12 @@ const { parserOptions } = require("../../utils");
 
 const ruleTester = new RuleTester({ parserOptions });
 
+const errors = [
+  {
+    messageId: "splitArguments",
+  },
+];
+
 ruleTester.run("one-by-one-arguments", rule, {
   valid: [
     `<button
@@ -47,6 +53,8 @@ ruleTester.run("one-by-one-arguments", rule, {
   Hello
 </button>;
 `,
+    '<i className={notClassNames("class-name-1 class-name-2 class-name-3")}/>',
+    '<i className={this.classNames("class-name-1 class-name-2 class-name-3")}/>',
   ],
 
   invalid: [
@@ -61,7 +69,6 @@ ruleTester.run("one-by-one-arguments", rule, {
 >
   Hello
 </button>;`,
-      options: [],
       output: `
 <button
   className={classNames(
@@ -72,12 +79,7 @@ ruleTester.run("one-by-one-arguments", rule, {
 >
   Hello
 </button>;`,
-      errors: [
-        {
-          message:
-            "An argument of classNames() has multiple classes. Should be written one by one.",
-        },
-      ],
+      errors,
     },
 
     {
@@ -90,7 +92,6 @@ ruleTester.run("one-by-one-arguments", rule, {
 >
   Hello
 </button>;`,
-      options: [],
       output: `
 <button
   className={classNames("bg-blue-300", "block", foo && [
@@ -100,12 +101,7 @@ ruleTester.run("one-by-one-arguments", rule, {
 >
   Hello
 </button>;`,
-      errors: [
-        {
-          message:
-            "An argument of classNames() has multiple classes. Should be written one by one.",
-        },
-      ],
+      errors,
     },
 
     {
@@ -113,17 +109,11 @@ ruleTester.run("one-by-one-arguments", rule, {
 <button className={classNames("bg-blue-300 block", style.someClass)}>
   Hello
 </button>;`,
-      options: [],
       output: `
 <button className={classNames("bg-blue-300", "block", style.someClass)}>
   Hello
 </button>;`,
-      errors: [
-        {
-          message:
-            "An argument of classNames() has multiple classes. Should be written one by one.",
-        },
-      ],
+      errors,
     },
 
     {
@@ -152,12 +142,7 @@ ruleTester.run("one-by-one-arguments", rule, {
 >
   Hello
 </button>;`,
-      errors: [
-        {
-          message:
-            "An argument of clsx() has multiple classes. Should be written one by one.",
-        },
-      ],
+      errors,
     },
   ],
 });
