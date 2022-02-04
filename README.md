@@ -53,3 +53,8 @@ Then configure the rules you want to use under the rules section.
 |  ✔  | 🔧  | [classnames/prefer-classnames-function](docs/rules/prefer-classnames-function.md) | suggest using className() or clsx() in JSX className                            |
 |  ✔  | 🔧  | [classnames/one-by-one-arguments](docs/rules/one-by-one-arguments.md)             | suggest not to include multiple classes in an argument of className() or clsx() |
 |  ✔  | 🔧  | [classnames/no-unnecessary-whitespace](docs/rules/no-unnecessary-whitespace.md)  | suggest not to include whitespace in arguments to className() or clsx() or strings in className attribute |
+|  ✔  | 🔧  | [classnames/order-classnames](docs/rules/no-unnecessary-whitespace.md)  | orders arguments to className() or clsx() in className attribute |
+
+
+## TODO
+- advise against using literal arrays as argument to classNames/clsx
