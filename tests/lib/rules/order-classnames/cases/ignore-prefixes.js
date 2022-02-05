@@ -1,11 +1,9 @@
 // @ts-check
 "use strict";
 
-const { RuleTester } = require("eslint");
-
 module.exports = {
   /**
-   *  @type  {{valid: (string | RuleTester.ValidTestCase)[], invalid: RuleTester.InvalidTestCase[]}}
+   *  @type  {{valid: (string | import("eslint").RuleTester.ValidTestCase)[], invalid: import("eslint").RuleTester.InvalidTestCase[]}}
    **/
   cases: {
     valid: [
