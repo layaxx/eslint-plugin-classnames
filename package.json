@@ -1,6 +1,6 @@
 {
   "name": "eslint-plugin-classnames",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Formatting help for className attributes in JSX, with a focus on clsx/classNames and tailwindcss support",
   "repository": {
     "url": "https://github.com/layaxx/eslint-plugin-classnames"
@@ -18,8 +18,7 @@
   "scripts": {
     "test": "nyc mocha tests --recursive --forbid-only",
     "dev": "mocha tests --recursive",
-    "lint": "eslint .",
-    "prepare": "husky install"
+    "lint": "eslint ."
   },
   "dependencies": {},
   "devDependencies": {
@@ -30,7 +29,6 @@
     "eslint-plugin-eslint-plugin": "^4.1.0",
     "eslint-plugin-node": "^11.1.0",
     "glob": "^7.2.0",
-    "husky": "^7.0.4",
     "mocha": "^7.2.0",
     "nyc": "^15.1.0",
     "typescript": "^4.3.5"
